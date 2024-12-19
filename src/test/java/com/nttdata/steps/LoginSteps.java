@@ -8,43 +8,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
 public class LoginSteps {
-
     private WebDriver driver;
 
-    //constructor
     public LoginSteps(WebDriver driver){
         this.driver = driver;
     }
-
-    /**
-     * Escribir el usuario
-     * @param user el usuario
-     */
-    public void typeUser(String user){
+    public void typeusername(String username) {
         WebElement userInputElement = driver.findElement(LoginPage.userInput);
-        userInputElement.sendKeys(user);
+        userInputElement.sendKeys(username);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(444));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
         wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPage.loginButton));
-
-
     }
 
-    /**
-     * Escribir el password
-     * @param password el password del usuario
-     */
-    public void typePassword(String password){
+    public void typepassword(String password) {
         this.driver.findElement(LoginPage.passInput).sendKeys(password);
     }
 
-    /**
-     * Hacer click en el botón login
-     */
-    public void login(){
+    public void login() {
         this.driver.findElement(LoginPage.loginButton).click();
     }
-
 }
